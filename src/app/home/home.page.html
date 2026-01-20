@@ -1,20 +1,69 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <!-- Yêu cầu 4: Icon cart trong tiêu đề -->
     <ion-title>
-      Blank
+      <ion-icon name="cart" style="margin-right: 8px; vertical-align: middle;"></ion-icon>
+      Shopping List
     </ion-title>
+
+    <!-- Nút chuyển trang sang About -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/items/about">
+        About
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content
+  [fullscreen]="true"
+  class="ion-padding"
+>
+  <!-- KHU VỰC NHẬP ITEM -->
+  <ion-item>
+    <!-- Yêu cầu 4: Icon cart cho ô nhập liệu -->
+    <ion-icon name="cart" slot="start" color="primary"></ion-icon>
+    <ion-input
+      label="Món cần mua"
+      labelPlacement="floating"
+      placeholder="Nhập tên sản phẩm..."
+      [(ngModel)]="newItem"
+    >
+    </ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- NÚT THÊM với icon -->
+  <ion-button expand="block" (click)="addItem()">
+    <ion-icon name="add-circle" slot="start"></ion-icon>
+    Thêm
+  </ion-button>
+
+  <!-- DANH SÁCH ITEM với ion-item-sliding -->
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items; let i = index">
+      <ion-item>
+        <!-- Yêu cầu 4: Icon cart cho mỗi item -->
+        <ion-icon name="cart" slot="start" color="secondary"></ion-icon>
+        
+        <!-- Yêu cầu 3: Checkbox để đánh dấu đã mua -->
+        <ion-checkbox 
+          slot="start" 
+          [(ngModel)]="item.isBought"
+          aria-label="Đánh dấu đã mua"
+        ></ion-checkbox>
+        
+        <!-- Yêu cầu 3: Gạch ngang khi đã mua -->
+        <ion-label [class.done]="item.isBought">
+          {{ item.name }}
+        </ion-label>
+      </ion-item>
+      
+      <!-- Nút xóa hiện ra khi vuốt sang trái -->
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteItem(i)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

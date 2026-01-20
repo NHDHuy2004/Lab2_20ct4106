@@ -25,3 +25,40 @@
 #container a {
   text-decoration: none;
 }
+
+// Yêu cầu 3: Style cho item đã mua (gạch ngang)
+.done {
+  text-decoration: line-through;
+  color: #999;
+  font-style: italic;
+}
+
+// Yêu cầu 4: Style bổ sung
+ion-item-sliding {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+ion-button {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  --border-radius: 8px;
+}
+
+// Yêu cầu 4: Style cho list
+ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+ion-item {
+  --background: #ffffff;
+  --border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+// Yêu cầu 4: Style cho input
+ion-input {
+  --padding-start: 8px;
+}

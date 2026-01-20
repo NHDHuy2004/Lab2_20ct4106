@@ -11,7 +11,7 @@ Dự án này đã được khởi tạo sẵn (tương ứng với Bước 1 tr
 1.  **Clone repository** này về máy.
 2.  Mở terminal tại thư mục dự án, chạy lệnh:
     ```bash
-    npm install
+    ionic serve
     ```
 3. Bắt đầu làm bài từ **Bước 2: Hiển thị danh sách** trong file hướng dẫn.
 4.  Để chạy thử ứng dụng:
